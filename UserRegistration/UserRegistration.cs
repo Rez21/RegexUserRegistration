@@ -11,6 +11,7 @@ namespace UserRegistration
     {
         public Regex FirstNameRegex = new Regex(@"^[A-Z]{1}[a-zA-Z]{2,}$");
         public Regex LastNameRegex = new Regex(@"^[A-Z]{1}[a-zA-Z]{2,}$");
+        public Regex UserEmail = new Regex(@"^[A-Z a-z 0-9]+([.-_+][A-Z a-z 0-9]+)*@[A-Z a-z 0-9]+.[A-Z a-z]{2,4}([.][A-Z a-z]{2,})?$");
         public void ValidateFirstName(string FirstName)
         {
             Console.WriteLine("\nFirst name: " + FirstName);
@@ -26,6 +27,14 @@ namespace UserRegistration
                 Console.WriteLine("Valid Last Name");
             else
                 Console.WriteLine("Invalid Last Name");
+        }
+        public void ValidateUserEmail(string Email)
+        {
+            Console.WriteLine("\nEmail: " + Email);
+            if (FirstNameRegex.IsMatch(Email))
+                Console.WriteLine("Valid Email ID");
+            else
+                Console.WriteLine("Invalid Email ID");
         }
     }
 }
