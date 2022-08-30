@@ -13,8 +13,9 @@ namespace UserRegistration
         public Regex LastNameRegex = new Regex(@"^[A-Z]{1}[a-zA-Z]{2,}$");
         public Regex UserEmail = new Regex(@"^[A-Z a-z 0-9]+([.-_+][A-Z a-z 0-9]+)*@[A-Z a-z 0-9]+.[A-Z a-z]{2,4}([.][A-Z a-z]{2,})?$");
         public Regex MobileNumber = new Regex(@"^[0-9]{2}\s[0-9]{10}$");
-        //public Regex UserPassword = new Regex(@"^[a-zA-z]{8,}$");
-        public Regex UserPassword = new Regex(@"^(=?.*[A-Z]).{8,}$");
+        //public Regex UserPassword = new Regex(@"^[a-zA-z]{8,}$"); (Rule 1)
+        // public Regex UserPassword = new Regex(@"^(=?.*[A-Z]).{8,}$"); (Rule 2)
+        public Regex UserPassword = new Regex(@"^(?=.*[A-Z])(?=.*[0-9]).{8,}$");
         public void ValidateFirstName(string FirstName)
         {
             Console.WriteLine("\nFirst name: " + FirstName);
