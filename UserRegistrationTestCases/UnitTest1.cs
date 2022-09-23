@@ -29,11 +29,16 @@ namespace UserRegistrationTestCases
         }
 
         [Test]
-        public void Email_TestValidation()
+        [TestCase("abc.100@yahoo.com", "^[a-zA-Z0-9]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]+([.][a-zA-Z]{2})?$")]
+        [TestCase("abc-100@yahoo.com", "^[a-zA-Z0-9]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]+([.][a-zA-Z]{2})?$")]
+        [TestCase("abc.100@yahoo.com.au", "^[a-zA-Z0-9]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]+([.][a-zA-Z]{2})?$")]
+        [TestCase("abc+100@yahoo.com", "^[a-zA-Z0-9]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]+([.][a-zA-Z]{2})?$")]
+
+        public void Email_TestValidation(string expected, string pattern)
         {
-            string expectedEmail = "prasad.ban@gmail.com";
-            string actualEmail = userValidation.ValidateUserEmail("prasad.ban@gmail.com");
-            Assert.AreEqual(expectedEmail, actualEmail);
+            
+            string actualEmail = userValidation.ValidateUserEmail(expected);
+            Assert.AreEqual(expected, actualEmail);
         }
 
         [Test]
