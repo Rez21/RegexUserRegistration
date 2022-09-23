@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UserRegistration
 {
-    class UserValidation
+    public class UserValidation
     {
         public Regex FirstNameRegex = new Regex(@"^[A-Z]{1}[a-zA-Z]{2,}$");
         public Regex LastNameRegex = new Regex(@"^[A-Z]{1}[a-zA-Z]{2,}$");
@@ -18,45 +18,51 @@ namespace UserRegistration
         // public Regex UserPassword = new Regex(@"^(=?.*[A-Z]).{8,}$"); (Rule 2)
         //public Regex UserPassword = new Regex(@"^(?=.*[A-Z])(?=.*[0-9]).{8,}$");
         public Regex UserPassword = new Regex(@"^(?=.*[A-Z])(?=.*[0-9])(?=.*[^0-9a-zA-Z])(?!.*[^0-9a-zA-Z].*[^0-9a-zA-Z]).{8,}$");
-        public void ValidateFirstName(string FirstName)
+        public string ValidateFirstName(string FirstName)
         {
             Console.WriteLine("\nFirst name: " + FirstName);
             if (FirstNameRegex.IsMatch(FirstName))
                 Console.WriteLine("Valid First Name");
             else
                 Console.WriteLine("Invalid First Name");
+            return FirstName;
         }
-        public void ValidateLastName(string LastName)
+        public string ValidateLastName(string LastName)
         {
             Console.WriteLine("\nLast name: " + LastName);
             if (LastNameRegex.IsMatch(LastName))
                 Console.WriteLine("Valid Last Name");
             else
                 Console.WriteLine("Invalid Last Name");
+            return LastName;
         }
-        public void ValidateUserEmail(string Email)
+        public string ValidateUserEmail(string Email)
         {
             Console.WriteLine("\nEmail: " + Email);
             if (UserEmail.IsMatch(Email))
                 Console.WriteLine("Valid Email ID");
             else
                 Console.WriteLine("Invalid Email ID");
+            return Email;   
         }
-        public void ValidateMobileNumber(string UserMobile)
+        public string ValidateMobileNumber(string UserMobile)
         {
             Console.WriteLine("\nMobile Number: " + UserMobile);
             if (MobileNumber.IsMatch(UserMobile))
                 Console.WriteLine("Valid Mobile Number");
             else
                 Console.WriteLine("Invalid Mobile Number");
+            return UserMobile;
         }
-        public void ValidatePassword(string Password)
+        public string ValidatePassword(string Password)
         {
             Console.WriteLine("\nPassword : " + Password);
             if (UserPassword.IsMatch(Password))
                 Console.WriteLine("Valid Password");
             else
                 Console.WriteLine("Invalid Password");
+            return Password;
         }
+      
     }
 }
